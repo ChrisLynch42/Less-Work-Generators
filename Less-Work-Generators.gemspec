@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'Less/Work/Generators/version'
+require 'rails/generators/lesswork/admin/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "Less-Work-Generators"
-  spec.version       = Less::Work::Generators::VERSION
+  spec.version       = LessWork::Admin::VERSION
   spec.authors       = ["chrislynch42"]
   spec.email         = ["chrislynch42@yahoo.com"]
   spec.summary       = %q{TODO: Write a short summary. Required.}

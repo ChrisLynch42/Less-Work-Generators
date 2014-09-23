@@ -5,3 +5,4 @@ gemspec
 
 gem 'rspec'
 gem 'activerecord'
+gem 'rails'

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Less-Work-Generators.iml" filepath="$PROJECT_DIR$/.idea/Less-Work-Generators.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../rails/.idea/rails.iml" filepath="$PROJECT_DIR$/../rails/.idea/rails.iml" />
     </modules>
   </component>
 </project>

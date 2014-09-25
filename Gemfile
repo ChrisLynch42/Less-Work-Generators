@@ -6,3 +6,5 @@ gemspec
 gem 'rspec'
 gem 'activerecord'
 gem 'rails'
+#gem 'test-unit'
+gem 'minitest'

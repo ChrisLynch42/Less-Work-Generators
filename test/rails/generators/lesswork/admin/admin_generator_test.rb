@@ -4,9 +4,11 @@ require_relative '../../../../../lib/rails/generators/lesswork/admin/admin_gener
 
 class AdminGeneratorTest < Rails::Generators::TestCase
   #tests LessWork::Admin::AdminGenerator
+
+  Rails::Generators::TestCase.destination_root = Dir.pwd + '/input'
   def test_me
     assert_equal(true, true)
-    puts "xxxxxxxxxxx"
+    puts destination_root
   end
 
 end

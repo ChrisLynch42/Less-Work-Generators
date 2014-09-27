@@ -1,14 +1,20 @@
 require 'minitest/autorun'
-require 'rails/generators/test_case'
+require_relative '../test_helper'
 require_relative '../../../../../lib/rails/generators/lesswork/admin/admin_generator'
 
-class AdminGeneratorTest < Rails::Generators::TestCase
-  #tests LessWork::Admin::AdminGenerator
 
-  Rails::Generators::TestCase.destination_root = Dir.pwd + '/input'
-  def test_me
+class AdminGeneratorTest < Rails::Generators::TestCase
+  tests LessWork::Admin::AdminGenerator
+
+  def test_setup
     assert_equal(true, true)
     puts destination_root
+  end
+
+
+  def test_run_generator
+    content = run_generator ["--help"]
+    puts content
   end
 
 end

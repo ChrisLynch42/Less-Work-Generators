@@ -6,7 +6,7 @@ require "rails/generators/active_record/migration"
 
 module LessWork
 
-  class MigrationGenerator
+  class MigrationGenerator < Rails::Generators::Base
     include Rails::Generators::Migration
     include ActiveRecord::Generators::Migration
 

@@ -12,8 +12,10 @@ class MigrationGeneratorTest < Rails::Generators::TestCase
 
 
   def test_run_generator
-    #content = run_generator ["--help"]
-    #puts content
+    content = run_generator ["--help"]
+    puts content
+    assert_match(/Runtime options:/, content)
+    assert_match(/Description:/, content)
   end
 
 end

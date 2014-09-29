@@ -14,7 +14,7 @@ class AdminGeneratorTest < Rails::Generators::TestCase
 
   def test_run_generator
     content = run_generator ["--help"]
-    puts content
+    #puts content
   end
 
 end

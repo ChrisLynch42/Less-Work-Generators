@@ -3,7 +3,7 @@ require 'active_support'
 require 'yaml'
 
 module LessWork
-  module IDatabaseConnection
+  module DatabaseMixin
     extend ActiveSupport::Concern
 
     module ClassMethods

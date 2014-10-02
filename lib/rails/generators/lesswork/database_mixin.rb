@@ -9,7 +9,7 @@ module LessWork
     module ClassMethods
       mattr_accessor :database_config_path, :database_configuration
 
-      def set_default_database_config_path(config_path=nil)
+      def set_database_config_path(config_path=nil)
         if config_path.nil?
           self.database_config_path = Dir.pwd + '/config/database.yml'
         else
@@ -19,9 +19,9 @@ module LessWork
 
       def get_configuration
         if database_config_path.nil?
-          set_default_database_config_path
+          set_database_config_path
         end
-        database_configuration = YAML.load(File.read(database_config_path))
+        self.database_configuration = YAML.load(File.read(database_config_path))
       end
 
       def connect

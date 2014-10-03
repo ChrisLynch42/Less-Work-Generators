@@ -1,0 +1,2 @@
+  adapter: sqlite3
+  database: temp_database/development.sqlite3

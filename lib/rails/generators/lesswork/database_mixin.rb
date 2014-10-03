@@ -1,15 +1,19 @@
 require 'active_record'
 require 'active_support'
 require 'yaml'
+=begin
+This class provides an adapter around ActiveRecord::Base to provide
+database access to the classes that implement this module.
+=end
 
 module LessWork
   module DatabaseMixin
     extend ActiveSupport::Concern
 
     module ClassMethods
-      mattr_accessor :database_config_path, :database_configuration
+      mattr_accessor :database_config_path, :database_configuration, :base_dir
 
-      def set_database_config_path(config_path=nil)
+      def set_databse_config_path(config_path=nil)
         if config_path.nil?
           self.database_config_path = Dir.pwd + '/config/database.yml'
         else
@@ -17,25 +21,25 @@ module LessWork
         end
       end
 
-      def get_configuration
+      def set_database_configuration
         if database_config_path.nil?
-          set_database_config_path
+          set_databse_config_path
         end
         self.database_configuration = YAML.load(File.read(database_config_path))
       end
 
-      def connect
-        get_configuration
-        if @database_configuration.nil?
+      def connect_to_database
+        set_database_configuration
+        if self.database_configuration.nil?
           raise Exception.new("Database configuration is nil.")
         end
-        if @database_configuration['development']
-          config = @database_configuration['development']
+        if self.database_configuration['development']
+          config = self.database_configuration['development']
         else
-          config = @database_configuration
+          config = self.database_configuration
         end
-        unless config['database'][0] == '/'
-          config['database']=@options[:rails_dir] + '/' + config['database']
+        if config['database'].nil?
+          raise Exception.new("database location is nil.")
         end
         unless FileTest.exist?(config['database'])
           raise Exception.new("Database " + config['database'] + " does not exist.")
@@ -43,6 +47,7 @@ module LessWork
 
         end
         ActiveRecord::Base.establish_connection(config)
+        #######This is necessary to force a database connection.  Otherwise connected? returns false
         ActiveRecord::Base.connection.tables
         unless ActiveRecord::Base.connected?
           raise Exception.new("Database Connection failed!")

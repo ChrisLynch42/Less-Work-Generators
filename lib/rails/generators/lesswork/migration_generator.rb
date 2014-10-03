@@ -17,6 +17,9 @@ module LessWork
     self.database_config_path = Dir.pwd + '/config/database.yml'
 
 
+    ###how a template is called
+    ###template 'controller.rb', File.join('app/controllers', class_path, "#{file_name}_controller.rb")
+
 
 
 
